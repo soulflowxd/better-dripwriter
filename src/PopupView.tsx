@@ -19,7 +19,7 @@ function stateForStatus(status: TypingStatus, settled: StatusState): StatusState
 }
 
 const TITLE = "Better Drip Writter";
-const TITLE_SPLIT = 10;
+const TITLE_SPLIT = "Better Drip ".length;
 const THEME_KEY = "dripwriterTheme";
 
 function MixRow({ id, label, unit, min, max, step = 1, value, onChange }: {

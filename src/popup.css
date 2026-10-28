@@ -118,6 +118,7 @@ body {
   color: var(--text-primary);
 }
 .hero h1 em {
+  display: block;
   font-style: italic;
   font-weight: 400;
   color: var(--gold);

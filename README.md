@@ -34,6 +34,12 @@ Load the development build as an **unpacked extension**:
 - Chrome / Edge: `chrome://extensions` → enable Developer mode → Load unpacked → `build/chrome-mv3-dev`
 - Firefox: `about:debugging#/runtime/this-firefox` → Load Temporary Add-on → `build/firefox-mv3-dev/manifest.json`
 
+### Updating an installed copy
+
+An unpacked Chrome or Edge extension does not fetch changes from GitHub. Download the latest `build/chrome-mv3-prod.zip`, replace the contents of the folder you originally loaded, then click **Reload** on its card in `chrome://extensions` or `edge://extensions`. Remove any older **Dripwriter Origin** installation if it is still listed; otherwise both extensions may appear in the toolbar. Firefox temporary add-ons must be loaded again after a browser restart.
+
+For browser-managed automatic updates, publish the extension through the Chrome Web Store, Edge Add-ons, or Mozilla Add-ons. A GitHub push alone does not update installed copies.
+
 ## Build & package
 
 ```bash
