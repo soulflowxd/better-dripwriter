@@ -16,3 +16,7 @@ Use `pnpm exec tsc --noEmit` and `pnpm test` for checks. Use `pnpm package` to r
 Keep the version in `package.json` and `src/lib/version.ts` synchronized. Do not use the upstream `bump-version.sh` script for extension-only releases; it also modifies the unadapted website.
 
 An unpacked extension does not update itself from GitHub. Users must replace their extracted files and reload the extension, or install a published store version for browser-managed updates.
+
+## Secrets
+
+This is a public repository. Never commit credentials or put them in extension source or packaged ZIPs. Run `pnpm check:secrets` before pushing. GitHub's push protection is enabled, and `.github/workflows/secret-check.yml` scans pushes and pull requests. If a key is exposed, rotate it; Git history retains old commits.

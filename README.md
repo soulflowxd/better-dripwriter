@@ -46,6 +46,10 @@ pnpm package           # Zips both into build/chrome-mv3-prod.zip and build/fire
 
 The packaged `*.zip` files in `build/` are tracked in git; the unpacked `build/<target>/` directories are not.
 
+## Credential safety
+
+Keep API keys, tokens, passwords, private keys, and signing files out of this public repository and out of the extension bundle. Local `.env` files and common credential file types are ignored by Git. Run `pnpm check:secrets` before pushing; CI runs the same check on pushes and pull requests. GitHub secret scanning and push protection are enabled for this repository. If a real credential was ever committed, revoke or rotate it: removing a file from the latest commit does not erase it from Git history.
+
 ## Usage
 
 1. Open a web page with a text box — a Google Doc, a Canvas assignment, a Brightspace discussion or assignment editor, the Packback editor, or any standard textarea / contenteditable field.
