@@ -1,7 +1,7 @@
 {
   "name": "better-drip-writer",
   "displayName": "Better Dripwriter",
-  "version": "3.2.9",
+  "version": "3.3.0",
   "description": "Types text into supported web editors with adjustable speed, corrections, and pauses.",
   "author": "Alexey Fedorov",
   "private": true,

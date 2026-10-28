@@ -16,7 +16,7 @@ Better Dripwriter is based on [Dripwriter Origin](https://github.com/alexey-max-
 
 ## Design
 
-The extension icon in [`assets/icon.png`](./assets/icon.png) uses an ivory pen-nib **b** and a blue ink drop. The popup uses the bundled Manrope font, translucent glass panels, a sky-blue accent, compact controls, live status, and collapsible typing settings. Dark and light themes are available. Manrope is distributed under the [SIL Open Font License](./assets/fonts/Manrope-OFL.txt).
+The extension icon in [`assets/icon.png`](./assets/icon.png) uses an ivory pen-nib **b** and a blue ink drop. The popup uses bundled Inter typography and a blue Aero-inspired glass treatment with compact controls, live status, and collapsible typing settings. Dark and light themes are available. Inter is distributed under the [SIL Open Font License](./assets/fonts/Inter-OFL.txt).
 
 Typos use nearby letter keys only. The **Spelling slips** setting occasionally misspells the current word, deletes it, and types the correct word.
 
