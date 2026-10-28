@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "plasmo dev",
     "dev:firefox": "plasmo dev --target=firefox-mv3",
-    "build": "plasmo build && node scripts/fix-content-manifest.mjs chrome-mv3-prod",
+    "build": "plasmo build && node scripts/fix-content-manifest.mjs chrome-mv3-prod && node scripts/sync-unpacked.mjs",
     "build:firefox": "plasmo build --target=firefox-mv3 && node scripts/fix-content-manifest.mjs firefox-mv3-prod",
     "package": "pnpm build && pnpm build:firefox && plasmo package && plasmo package --target=firefox-mv3",
     "typecheck": "tsc --noEmit",

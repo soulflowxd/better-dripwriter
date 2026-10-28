@@ -26,25 +26,29 @@ pnpm dev               # Chrome MV3 development (HMR) → build/chrome-mv3-dev
 pnpm dev:firefox       # Firefox MV3 development     → build/firefox-mv3-dev
 ```
 
-Load the development build as an **unpacked extension**:
-- Chrome / Edge: `chrome://extensions` → enable Developer mode → Load unpacked → `build/chrome-mv3-dev`
-- Firefox: `about:debugging#/runtime/this-firefox` → Load Temporary Add-on → `build/firefox-mv3-dev/manifest.json`
+For Chrome or Edge, load the ready-to-use [`extension/`](./extension/) folder from this project:
+
+1. Open `chrome://extensions` or `edge://extensions` and turn on **Developer mode**.
+2. Click **Load unpacked** and select this project's `extension` folder (the folder containing `manifest.json`).
+3. Remove any older ZIP-installed or Dripwriter Origin copy if it appears as a second extension.
+
+For Firefox development, open `about:debugging#/runtime/this-firefox` and use **Load Temporary Add-on** with `build/firefox-mv3-dev/manifest.json` after running `pnpm dev:firefox`.
 
 ### Updating an installed copy
 
-An unpacked Chrome or Edge extension does not fetch changes from GitHub. Download the latest `build/chrome-mv3-prod.zip`, replace the contents of the folder you originally loaded, then click **Reload** on its card in `chrome://extensions` or `edge://extensions`. Remove any older **Dripwriter Origin** installation if it is still listed; otherwise both extensions may appear in the toolbar. Firefox temporary add-ons must be loaded again after a browser restart.
+The project keeps `extension/` updated whenever `pnpm build` or `pnpm package` runs. After pulling a new commit, or after Codex rebuilds the project, click **Reload** on the extension card in `chrome://extensions` or `edge://extensions`. If you edit source files yourself, run `pnpm build` first. No ZIP download or repeated folder selection is needed. Firefox temporary add-ons must be loaded again after a browser restart.
 
 For browser-managed automatic updates, publish the extension through the Chrome Web Store, Edge Add-ons, or Mozilla Add-ons. A GitHub push alone does not update installed copies.
 
 ## Build & package
 
 ```bash
-pnpm build             # Chrome MV3 production  → build/chrome-mv3-prod
+pnpm build             # Chrome MV3 production  → extension/ and build/chrome-mv3-prod
 pnpm build:firefox     # Firefox MV3 production → build/firefox-mv3-prod
 pnpm package           # Zips both into build/chrome-mv3-prod.zip and build/firefox-mv3-prod.zip
 ```
 
-The packaged `*.zip` files in `build/` are tracked in git; the unpacked `build/<target>/` directories are not.
+The ready-to-load `extension/` folder and packaged `*.zip` files in `build/` are tracked in git. The intermediate `build/<target>/` directories are not.
 
 ## Credential safety
 
