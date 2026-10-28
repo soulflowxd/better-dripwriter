@@ -14,6 +14,8 @@ This repository is the user's fork of [Dripwriter Origin](https://github.com/ale
 
 Use `pnpm exec tsc --noEmit` and `pnpm test` for checks. Use `pnpm package` to rebuild both distributable ZIPs in `build/` and the ready-to-load `extension/` folder. These artifacts are tracked and should be included when extension assets or code change. Confirm the generated manifests still have `all_frames` and `match_about_blank` enabled.
 
+Keep `LICENSE` and `NOTICE.txt` in every distributable; `scripts/fix-content-manifest.mjs` copies them into production builds.
+
 Keep the version in `package.json` and `src/lib/version.ts` synchronized. Do not use the upstream `bump-version.sh` script for extension-only releases; it also modifies the unadapted website.
 
 An unpacked extension does not update itself from GitHub. Users who load the tracked `extension/` folder only need to reload it after this workspace receives updated files. A store version is required for browser-managed updates.

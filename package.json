@@ -1,8 +1,8 @@
 {
   "name": "better-drip-writter",
   "displayName": "Better Drip Writter",
-  "version": "3.2.3",
-  "description": "Simulates human typing on any website — Google Docs, Canvas, and more: natural speed, realistic typos, false starts, and breaks.",
+  "version": "3.2.4",
+  "description": "Types text into supported web editors with adjustable speed, corrections, and pauses.",
   "author": "Alexey Fedorov",
   "private": true,
   "type": "module",

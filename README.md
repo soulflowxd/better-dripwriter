@@ -16,7 +16,7 @@ Better Drip Writter is based on [Dripwriter Origin](https://github.com/alexey-ma
 
 ## Design
 
-The extension icon in [`assets/icon.png`](./assets/icon.png) uses an ivory pen-nib **b** and a blue ink drop. The popup uses the same blue accent, with “Better” highlighted and a short, single-line label above the title.
+The extension icon in [`assets/icon.png`](./assets/icon.png) uses an ivory pen-nib **b** and a blue ink drop. The popup uses a compact writing workspace with a text area, live status, and collapsible typing settings.
 
 ## Develop
 
@@ -64,10 +64,12 @@ Keep API keys, tokens, passwords, private keys, and signing files out of this pu
 
 Rich editors may live in embedded frames or open shadow roots. Click inside the actual editor before pressing Start. Browser extensions cannot type into browser-protected pages, native desktop apps, or closed shadow roots; some web editors also reject synthetic input. Use **Run Test** on an unfamiliar editor before a longer run.
 
+Canvas assignments configured for **File Upload** do not have a text-entry editor. The extension can type only when the assignment or discussion provides an actual text field. The popup stays open after Start so it can show an editor error rather than silently closing.
+
 ## Marketing site
 
 The upstream Next.js marketing site remains in [`website/`](./website). It has not been adapted for this fork.
 
 ## License
 
-[Original project license](./LICENSE) — noncommercial use is permitted; commercial use requires a separate license.
+[Original project license](./LICENSE) — noncommercial copying, modification, and distribution of the original **extension code** are permitted when the license terms and [required notice](./NOTICE.txt) accompany copies. Commercial use requires a separate license from the original author. The Chrome and Firefox packages include both files. The upstream `website/` is outside the license's stated extension scope; do not assume the same permission covers that site.

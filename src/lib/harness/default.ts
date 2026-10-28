@@ -164,9 +164,20 @@ if (typeof document !== "undefined") {
       const target = event.composedPath().find((node) =>
         node instanceof HTMLElement && isEditable(node)
       );
-      if (target instanceof HTMLElement) {
-        lastEditable = target;
-      }
+      lastEditable = target instanceof HTMLElement ? target : null;
+    },
+    true
+  );
+
+  // Opening the popup removes page focus. Keep the last editor for that case,
+  // but discard it when the user clicks a different, non-editable control.
+  document.addEventListener(
+    "pointerdown",
+    (event) => {
+      const target = event.composedPath().find((node) =>
+        node instanceof HTMLElement && isEditable(node)
+      );
+      lastEditable = target instanceof HTMLElement ? target : null;
     },
     true
   );

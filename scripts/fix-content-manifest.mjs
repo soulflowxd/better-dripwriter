@@ -1,4 +1,4 @@
-import { readFile, writeFile } from "node:fs/promises";
+import { copyFile, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
 const target = process.argv[2];
@@ -21,3 +21,5 @@ if (target === "chrome-mv3-prod") {
   content.match_origin_as_fallback = true;
 }
 await writeFile(path, `${JSON.stringify(manifest, null, 2)}\n`);
+await copyFile("LICENSE", join("build", target, "LICENSE"));
+await copyFile("NOTICE.txt", join("build", target, "NOTICE.txt"));

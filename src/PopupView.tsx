@@ -152,7 +152,7 @@ export default function PopupView() {
         })) as TargetFrameResponse | undefined;
 
         if (res?.frameId == null) {
-          fail("Click into a text box on the page, then press Start.");
+          fail("No text editor is selected. Click inside a text-entry field first. File-upload-only Canvas assignments cannot accept typed text.");
           return null;
         }
         frameId = res.frameId;
@@ -212,9 +212,7 @@ export default function PopupView() {
       setStatusDetail(response.status.detail);
       setStatusState(stateForStatus(response.status, "done"));
 
-      if (response.ok) {
-        window.close();
-      }
+      // Keep the popup visible so a failed editor probe can report its error.
     },
     [settings, sendToActiveTab]
   );
@@ -265,11 +263,12 @@ export default function PopupView() {
   return (
     <main className="shell">
       <header className="hero">
-        <p className="hero-eyebrow">TYPE NATURALLY / ANYWHERE</p>
-        <h1 className="title">
-          <span className="title-accent">Better</span> Drip
-          <em>Writter</em>
-        </h1>
+        <div className="brand-mark" aria-hidden="true">b<span>·</span></div>
+        <div className="brand-copy">
+          <p className="hero-eyebrow">BETTER DRIP WRITTER</p>
+          <h1 className="title">Your typing studio.</h1>
+          <p className="hero-description">Write once. Type it into the editor at your pace.</p>
+        </div>
         <button
           type="button"
           className="theme-toggle"
@@ -282,26 +281,29 @@ export default function PopupView() {
       </header>
 
       <section className="status" data-state={statusState}>
-        {statusDetail}
+        <span className="status-label">STATUS</span>
+        <span className="status-detail">{statusDetail}</span>
       </section>
 
       <form className="panel" onSubmit={onStart}>
         <label className="text-block" htmlFor="text">
-          <span className="text-block__label">Text to type</span>
+          <span className="text-block__label"><span>01</span> Your text</span>
           <textarea
             id="text"
-            rows={9}
-            placeholder="Paste the text you want typed into any text box..."
+            rows={8}
+            placeholder="Paste your text here..."
             value={settings.text}
             onChange={(e) => update("text", e.target.value)}
           />
+          <span className="text-count">{settings.text.length} characters</span>
         </label>
 
-        <div className="mixer">
+        <details className="settings-panel">
+          <summary><span><span className="section-number">02</span> Typing settings</span><span className="settings-caret" aria-hidden="true">⌄</span></summary>
+          <div className="mixer">
 
           {/* Speed */}
           <div className="mix-group">
-            <div className="mix-options-hd">Options</div>
             <div className="mix-group-hd">Speed</div>
             <MixRow id="wpm" label="Typing speed"  unit="wpm" min={20}  max={150} value={settings.wpm}          onChange={v => update("wpm", v)} />
             <MixRow id="sv"  label="Speed variance" unit="%"   min={0}   max={80}  value={settings.speedVariance} onChange={v => update("speedVariance", v)} />
@@ -323,7 +325,8 @@ export default function PopupView() {
             <MixRow id="fs"   label="False starts" unit="%" min={0} max={20} value={settings.detourRate} onChange={v => update("detourRate", v)} />
           </div>
 
-        </div>
+          </div>
+        </details>
 
         <div className="actions">
           <button type="submit" className="button button--primary">
@@ -357,11 +360,6 @@ export default function PopupView() {
         </div>
       </form>
 
-      <footer className="popup-footer">
-        <span className="footer-brand">Better Drip Writter</span>
-        <span className="popup-version">{VERSION_TAG}</span>
-      </footer>
-
       <div className="api-toggle">
         <label className="api-toggle__row">
           <input
@@ -380,6 +378,10 @@ export default function PopupView() {
           Exposes <code>window._dripwriter</code> on the active page. Active immediately — no reload needed.
         </p>
       </div>
+      <footer className="popup-footer">
+        <span className="footer-brand">BETTER DRIP WRITTER</span>
+        <span className="popup-version">{VERSION_TAG}</span>
+      </footer>
     </main>
   );
 }

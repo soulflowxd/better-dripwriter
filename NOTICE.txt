@@ -1,0 +1,5 @@
+Required Notice: Copyright (c) 2026 Alexey Fedorov
+
+Better Drip Writter is a modified, noncommercial fork of Dripwriter Origin.
+Original source: https://github.com/alexey-max-fedorov/dripwriter-origin
+The original license terms are included in LICENSE.

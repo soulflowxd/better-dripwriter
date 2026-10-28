@@ -200,6 +200,13 @@ function startDrip(
     return { ok: false, status: currentStatus, error: currentStatus.detail };
   }
 
+  if (!selectHarness().hasTarget()) {
+    const detail = "No text editor is selected. Click inside a text-entry field first. File-upload-only assignments cannot accept typed text.";
+    setStatus(false, detail, true);
+    onSettled?.({ ok: false, error: detail });
+    return { ok: false, status: currentStatus, error: detail };
+  }
+
   // A deliberate Start discards any resumable progress from before.
   resumeState = null;
   stopRun("Restarting...", true);
