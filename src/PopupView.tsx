@@ -265,7 +265,7 @@ export default function PopupView() {
       <header className="hero">
         <div className="brand-mark" aria-hidden="true">b<span>·</span></div>
         <div className="brand-copy">
-          <p className="hero-eyebrow">BETTER DRIP WRITTER</p>
+          <p className="hero-eyebrow">BETTER DRIPWRITER</p>
           <h1 className="title">Your typing studio.</h1>
           <p className="hero-description">Write once. Type it into the editor at your pace.</p>
         </div>
@@ -379,7 +379,7 @@ export default function PopupView() {
         </p>
       </div>
       <footer className="popup-footer">
-        <span className="footer-brand">BETTER DRIP WRITTER</span>
+        <span className="footer-brand">BETTER DRIPWRITER</span>
         <span className="popup-version">{VERSION_TAG}</span>
       </footer>
     </main>

@@ -1,4 +1,4 @@
-# Better Drip Writter
+# Better Dripwriter
 
 This repository is the user's fork of [Dripwriter Origin](https://github.com/alexey-max-fedorov/dripwriter-origin). Preserve the upstream license and attribution. The active extension is in `src/`; the `website/` directory is an upstream marketing site and is not adapted for this fork.
 

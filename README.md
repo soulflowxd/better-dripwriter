@@ -1,4 +1,4 @@
-# Better Drip Writter
+# Better Dripwriter
 
 A cross-browser extension (Chrome / Edge / Firefox) that types pasted text into web editors, including Google Docs, Canvas, Brightspace, and standard `<textarea>`, `<input>`, or `[contenteditable]` fields.
 
@@ -12,7 +12,7 @@ Built with [Plasmo](https://docs.plasmo.com/) + React + TypeScript.
 
 ## Attribution
 
-Better Drip Writter is based on [Dripwriter Origin](https://github.com/alexey-max-fedorov/dripwriter-origin) by Alexey Fedorov. The original license remains in [LICENSE](./LICENSE). This project is independent of Dripwriter, LLC and its commercial service.
+Better Dripwriter is based on [Dripwriter Origin](https://github.com/alexey-max-fedorov/dripwriter-origin) by Alexey Fedorov. The original license remains in [LICENSE](./LICENSE). This project is independent of Dripwriter, LLC and its commercial service.
 
 ## Design
 
@@ -58,7 +58,7 @@ Keep API keys, tokens, passwords, private keys, and signing files out of this pu
 
 1. Open a web page with a text box — a Google Doc, a Canvas assignment, a Brightspace discussion or assignment editor, the Packback editor, or any standard textarea / contenteditable field.
 2. Click where the typing should begin.
-3. Open the Better Drip Writter popup from the toolbar.
+3. Open the Better Dripwriter popup from the toolbar.
 4. Paste your text, tune the cadence, and press **Start**.
 5. Reopen the popup and press **Stop** at any time, or **Run Test** to verify which typing event paths work.
 

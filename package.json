@@ -1,7 +1,7 @@
 {
-  "name": "better-drip-writter",
-  "displayName": "Better Drip Writter",
-  "version": "3.2.4",
+  "name": "better-drip-writer",
+  "displayName": "Better Dripwriter",
+  "version": "3.2.5",
   "description": "Types text into supported web editors with adjustable speed, corrections, and pauses.",
   "author": "Alexey Fedorov",
   "private": true,
@@ -31,7 +31,7 @@
     "typescript": "^6.0.3"
   },
   "manifest": {
-    "name": "Better Drip Writter",
+    "name": "Better Dripwriter",
     "permissions": [
       "storage",
       "scripting"
@@ -41,7 +41,7 @@
     ],
     "browser_specific_settings": {
       "gecko": {
-        "id": "better-drip-writter@local.extension",
+        "id": "better-drip-writer@local.extension",
         "data_collection_permissions": {
           "required": [
             "none"

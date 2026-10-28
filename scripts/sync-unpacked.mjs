@@ -12,7 +12,7 @@ if (relative(workspace, destination) !== "extension") {
 }
 
 const sourceManifest = JSON.parse(await readFile(resolve(source, "manifest.json"), "utf8"));
-if (sourceManifest.name !== "Better Drip Writter" || sourceManifest.manifest_version !== 3) {
+if (sourceManifest.name !== "Better Dripwriter" || sourceManifest.manifest_version !== 3) {
   throw new Error("The Chrome build manifest is missing or unexpected.");
 }
 await stat(source);

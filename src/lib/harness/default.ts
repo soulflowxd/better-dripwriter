@@ -79,7 +79,7 @@ export class DefaultHarness implements Harness {
       throw new Error(
         this.wrote
           ? "This text box stopped accepting text mid-run. Click back into it and press Start again."
-          : "Better Drip Writter can't type into this text box — it rejected every input method."
+          : "Better Dripwriter can't type into this text box — it rejected every input method."
       );
     }
 
