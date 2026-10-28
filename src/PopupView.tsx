@@ -266,8 +266,8 @@ export default function PopupView() {
         <div className="brand-mark" aria-hidden="true">b<span>·</span></div>
         <div className="brand-copy">
           <p className="hero-eyebrow">BETTER DRIPWRITER</p>
-          <h1 className="title">Your typing studio.</h1>
-          <p className="hero-description">Write once. Type it into the editor at your pace.</p>
+          <h1 className="title">Better <span>Dripwriter.</span></h1>
+          <p className="hero-description">Your words, at your pace.</p>
         </div>
         <button
           type="button"
@@ -277,7 +277,6 @@ export default function PopupView() {
         >
           {theme === "dark" ? "☀" : "☾"}
         </button>
-        <p className="hero-description">Paste your text, place the cursor in an editor, then press Start.</p>
       </header>
 
       <section className="status" data-state={statusState}>

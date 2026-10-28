@@ -17,7 +17,7 @@
     },
     "default_popup": "popup.html"
   },
-  "version": "3.2.6",
+  "version": "3.2.7",
   "author": "Alexey Fedorov",
   "name": "Better Dripwriter",
   "description": "Types text into supported web editors with adjustable speed, corrections, and pauses.",
