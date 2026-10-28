@@ -23,3 +23,4 @@ if (target === "chrome-mv3-prod") {
 await writeFile(path, `${JSON.stringify(manifest, null, 2)}\n`);
 await copyFile("LICENSE", join("build", target, "LICENSE"));
 await copyFile("NOTICE.txt", join("build", target, "NOTICE.txt"));
+await copyFile(join("assets", "fonts", "Manrope-OFL.txt"), join("build", target, "Manrope-OFL.txt"));
