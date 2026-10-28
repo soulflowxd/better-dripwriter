@@ -1,25 +1,18 @@
-# Dripwriter Origin
+# Better Drip Writter
 
-Two targets: a Plasmo browser extension and a Next.js marketing website.
+This repository is the user's fork of [Dripwriter Origin](https://github.com/alexey-max-fedorov/dripwriter-origin). Preserve the upstream license and attribution. The active extension is in `src/`; the `website/` directory is an upstream marketing site and is not adapted for this fork.
 
-## Version Bump
-`./bump-version.sh <version>` — syncs version across all 4 version files at once.
+## Extension
 
-## Extension Source (`src/`)
-- `src/popup.tsx` — popup UI wrapper; imports `PopupView`
-- `src/PopupView.tsx` — popup UI component
-- `src/content.ts` — content script; handles all typing simulation
-- `src/background.ts` — service worker; frame targeting
-- `src/types.ts` — shared types and `DEFAULT_SETTINGS`
+- `src/PopupView.tsx` and `src/popup.css`: popup UI
+- `assets/icon.png`: extension icon; Plasmo generates browser sizes from it
+- `src/content.ts`: typing control and content script
+- `src/lib/harness/`: editor-specific insertion and verification
+- `src/background.ts`: focused-frame routing
+- `scripts/fix-content-manifest.mjs`: adds frame flags that Plasmo omits from its generated manifests
 
-Dev: `pnpm dev` | Build: `pnpm build` | Firefox: `pnpm build:firefox` | Package (zip): `pnpm package`
-→ See `.claude/extension.md`
+Use `pnpm exec tsc --noEmit` and `pnpm test` for checks. Use `pnpm package` to rebuild both distributable ZIPs in `build/`. The ZIPs are tracked and should be included when extension assets or code change. Confirm the generated manifests still have `all_frames` and `match_about_blank` enabled.
 
-## Website Routes (Next.js App Router — `website/`)
-- `/` → `src/app/page.tsx`
-- `/get` → `src/app/get/page.tsx`
-- `/privacy` → `src/app/privacy/page.tsx`
-- `/license` → `src/app/license/page.tsx`
+Keep the version in `package.json` and `src/lib/version.ts` synchronized. Do not use the upstream `bump-version.sh` script for extension-only releases; it also modifies the unadapted website.
 
-Dev: `cd website && pnpm dev`
-→ See `.claude/website.md`
+An unpacked extension does not update itself from GitHub. Users must replace their extracted files and reload the extension, or install a published store version for browser-managed updates.

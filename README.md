@@ -1,6 +1,6 @@
 # Better Drip Writter
 
-A cross-browser extension (Chrome / Edge / Firefox) that types pasted text into any website — Google Docs, Canvas, the Packback editor, and virtually any `<textarea>`, `<input>`, or `[contenteditable]` field — with believable human cadence:
+A cross-browser extension (Chrome / Edge / Firefox) that types pasted text into web editors, including Google Docs, Canvas, Brightspace, and standard `<textarea>`, `<input>`, or `[contenteditable]` fields.
 
 - adjustable typing speed (20–150 WPM)
 - keyboard-neighbor typos that get auto-corrected
@@ -14,13 +14,9 @@ Built with [Plasmo](https://docs.plasmo.com/) + React + TypeScript.
 
 Better Drip Writter is based on [Dripwriter Origin](https://github.com/alexey-max-fedorov/dripwriter-origin) by Alexey Fedorov. The original license remains in [LICENSE](./LICENSE). This project is independent of Dripwriter, LLC and its commercial service.
 
-## ⭐️ FEATURED 
+## Design
 
-FEATURED IN [MANN BELLANI](https://www.instagram.com/mann.ascends/) AND [ALEXEY FEDOROV](https://www.instagram.com/alexeyfedorov._/)'S VIDEO ('LARPSLAYER' SERIES):
-
-*HOW I MADE A FREE ALTERNATIVE TO DRIPWRITER*
-
-https://www.instagram.com/reel/Dbz2SPnKwsx/
+The extension icon in [`assets/icon.png`](./assets/icon.png) uses an ivory pen-nib **b** and amber ink drop. The popup has a compact header, clearer status indicator, and warmer action styling.
 
 ## Develop
 

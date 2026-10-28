@@ -58,16 +58,16 @@
 
 :root {
   color-scheme: dark;
-  --bg-primary: #000000;
-  --bg-secondary: #0a0a0a;
-  --bg-card: #111111;
-  --border: #1a1a1a;
-  --border-hover: #333333;
+  --bg-primary: #090909;
+  --bg-secondary: #141414;
+  --bg-card: #181818;
+  --border: #30302d;
+  --border-hover: #56544e;
   --text-primary: #ffffff;
   --text-secondary: #a0a0a0;
   --text-tertiary: #666666;
-  --gold: #c9a84c;
-  --gold-hover: #d4b65e;
+  --gold: #f3b83f;
+  --gold-hover: #ffca61;
   --gold-soft: rgba(201, 168, 76, 0.08);
   --gold-glow: rgba(201, 168, 76, 0.35);
   --success: #6fc89a;
@@ -82,7 +82,7 @@
 
 body {
   margin: 0;
-  min-width: 420px;
+  min-width: 400px;
   background:
     radial-gradient(circle at top left, rgba(201, 168, 76, 0.08), transparent 36%),
     radial-gradient(circle at bottom right, rgba(201, 168, 76, 0.05), transparent 28%),
@@ -91,7 +91,7 @@ body {
 }
 
 .shell {
-  padding: 18px;
+  padding: 16px;
 }
 
 .hero,
@@ -104,8 +104,34 @@ body {
 }
 
 .hero {
-  padding: 18px 18px 14px;
+  padding: 22px 20px 18px;
   position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg, #20201c, #141414 68%);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: var(--gold);
+}
+
+.hero-eyebrow {
+  margin: 0 38px 14px 0;
+  color: var(--gold);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.hero-description {
+  max-width: 285px;
+  margin: 14px 0 0;
+  color: var(--text-secondary);
+  font-size: 11px;
+  line-height: 1.6;
 }
 
 .hero h1 {
@@ -149,6 +175,29 @@ body {
   font-size: 13px;
   line-height: 1.4;
   color: var(--text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+}
+
+.status::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  margin-top: 5px;
+  border-radius: 50%;
+  background: var(--text-tertiary);
+}
+
+.status[data-state="running"]::before,
+.status[data-state="done"]::before {
+  background: var(--gold);
+  box-shadow: 0 0 9px var(--gold-glow);
+}
+
+.status[data-state="error"]::before {
+  background: var(--error);
 }
 
 .status[data-state="running"] {
@@ -286,7 +335,7 @@ input[type="range"]:focus::-webkit-slider-thumb {
 
 .button--primary {
   flex: 1;
-  background: var(--gold);
+  background: linear-gradient(135deg, var(--gold-hover), var(--gold));
   color: var(--bg-primary);
 }
 
@@ -378,6 +427,10 @@ body[data-theme="light"] {
     radial-gradient(circle at top left, rgba(154, 111, 0, 0.06), transparent 36%),
     radial-gradient(circle at bottom right, rgba(154, 111, 0, 0.04), transparent 28%),
     var(--bg-primary);
+}
+
+body[data-theme="light"] .hero {
+  background: linear-gradient(145deg, #fffaf0, #faf7f2 68%);
 }
 
 @media (max-width: 480px) {

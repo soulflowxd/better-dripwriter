@@ -287,6 +287,7 @@ export default function PopupView() {
   return (
     <main className="shell">
       <header className="hero">
+        <p className="hero-eyebrow">BETTER DRIP WRITTER / YOUR TYPING STUDIO</p>
         <h1 className="title">
           {TITLE.slice(0, Math.min(titleLen, TITLE_SPLIT))}
           {titleLen > TITLE_SPLIT ? <em>{TITLE.slice(TITLE_SPLIT, titleLen)}</em> : null}
@@ -300,12 +301,7 @@ export default function PopupView() {
         >
           {theme === "dark" ? "☀️" : "🌙"}
         </button>
-        <ol className="subcopy">
-          <li>Paste text</li>
-          <li>Click where you want to type</li>
-          <li>Hit <kbd>START</kbd></li>
-          <li>Let the extension type it naturally, indistinguishable from a human.</li>
-        </ol>
+        <p className="hero-description">Paste your text, place the cursor in an editor, then press Start.</p>
       </header>
 
       <section className="status" data-state={statusState}>
