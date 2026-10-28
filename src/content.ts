@@ -27,6 +27,7 @@ import { readEditableContent } from "~/lib/harness/default";
 import { DIAGNOSTIC_METHODS } from "~/lib/harness/docs";
 import type { Harness } from "~/lib/harness/types";
 import { readWordContent } from "~/lib/harness/word";
+import { getNearbyTypo, makeSpellingSlip } from "~/lib/typos";
 
 interface RunState {
   cancelled: boolean;
@@ -78,15 +79,6 @@ interface ResumeState {
   harnessId: string;
 }
 
-const keyboardRows = [
-  { keys: "1234567890", offset: 0 },
-  { keys: "qwertyuiop", offset: 0.3 },
-  { keys: "asdfghjkl", offset: 0.8 },
-  { keys: "zxcvbnm", offset: 1.3 },
-  { keys: ",./", offset: 1.8 }
-];
-
-const neighborMap = buildNeighborMap();
 
 let activeRun: RunState | null = null;
 let resumeState: ResumeState | null = null;
@@ -425,14 +417,17 @@ async function runDripwriter(
       }
 
       if (isWordStart(text, index) && Math.random() < settings.detourRate / 100) {
-        const detourWord = pickDetourWord(text, index);
+        const word = text.slice(index).match(/^[A-Za-z]{4,12}\b/)?.[0];
+        const detourWord = word ? makeSpellingSlip(word) : null;
 
         if (detourWord) {
-          setStatus(true, `Typing... then deleting "${detourWord}"`);
+          setStatus(true, "Correcting a spelling slip...");
           // typeLiteral accounts for every temporary char it inserts.
+          const pendingBefore = run.strayChars;
           await typeLiteral(run, harness, detourWord, settings, false);
-          await wait(run, randomBetween(180, 320), true);
-          const deleted = await harness.delete(detourWord.length);
+          const typed = run.strayChars - pendingBefore;
+          if (typed > 0) await wait(run, randomBetween(180, 320), true);
+          const deleted = typed > 0 ? await harness.delete(typed) : 0;
           run.strayChars = Math.max(0, run.strayChars - deleted);
           await wait(run, randomBetween(80, 160), true);
           setStatus(true, "Typing...");
@@ -741,53 +736,8 @@ function normalizeSettings(settings: DripwriterSettings): DripwriterSettings {
   };
 }
 
-function buildNeighborMap() {
-  const positions = new Map<string, { row: number; column: number }>();
-
-  keyboardRows.forEach((row, rowIndex) => {
-    [...row.keys].forEach((key, columnIndex) => {
-      positions.set(key, { row: rowIndex, column: row.offset + columnIndex });
-    });
-  });
-
-  const map = new Map<string, string[]>();
-
-  positions.forEach((position, key) => {
-    const neighbors: string[] = [];
-
-    positions.forEach((otherPosition, otherKey) => {
-      if (key === otherKey) {
-        return;
-      }
-
-      const rowDistance = Math.abs(position.row - otherPosition.row);
-      const columnDistance = Math.abs(position.column - otherPosition.column);
-
-      if (rowDistance <= 1 && columnDistance <= 1.2) {
-        neighbors.push(otherKey);
-      }
-    });
-
-    map.set(key, neighbors);
-  });
-
-  return map;
-}
-
 function shouldMistype(char: string, settings: DripwriterSettings) {
-  return /[a-zA-Z,./]/.test(char) && Math.random() < settings.typoRate / 100;
-}
-
-function getNearbyTypo(char: string) {
-  const lowercase = char.toLowerCase();
-  const neighbors = neighborMap.get(lowercase);
-
-  if (!neighbors?.length) {
-    return null;
-  }
-
-  const typo = neighbors[Math.floor(Math.random() * neighbors.length)];
-  return char === lowercase ? typo : typo.toUpperCase();
+  return /[a-zA-Z]/.test(char) && Math.random() < settings.typoRate / 100;
 }
 
 function shouldTakeBreak(
@@ -827,19 +777,6 @@ function isWordStart(text: string, index: number) {
   const current = text[index];
   const previous = text[index - 1] ?? " ";
   return /[A-Za-z]/.test(current) && !/[A-Za-z]/.test(previous);
-}
-
-function pickDetourWord(text: string, index: number) {
-  const future = Array.from(text.slice(index).matchAll(/\b[A-Za-z][A-Za-z'-]{2,10}\b/g))
-    .map((match) => match[0])
-    .slice(1, 8)
-    .filter((word) => word.length >= 3 && word.length <= 10);
-
-  if (!future.length) {
-    return null;
-  }
-
-  return future[Math.floor(Math.random() * future.length)];
 }
 
 async function typeLiteral(

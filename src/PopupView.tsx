@@ -322,7 +322,7 @@ export default function PopupView() {
           <div className="mix-group">
             <div className="mix-group-hd">Natural Mistakes</div>
             <MixRow id="typo" label="Typos"        unit="%" min={0} max={25} value={settings.typoRate}   onChange={v => update("typoRate", v)} />
-            <MixRow id="fs"   label="False starts" unit="%" min={0} max={20} value={settings.detourRate} onChange={v => update("detourRate", v)} />
+            <MixRow id="fs"   label="Spelling slips" unit="%" min={0} max={20} value={settings.detourRate} onChange={v => update("detourRate", v)} />
           </div>
 
           </div>

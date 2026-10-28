@@ -18,6 +18,8 @@ Better Dripwriter is based on [Dripwriter Origin](https://github.com/alexey-max-
 
 The extension icon in [`assets/icon.png`](./assets/icon.png) uses an ivory pen-nib **b** and a blue ink drop. The popup uses a compact writing workspace with a text area, live status, and collapsible typing settings.
 
+Typos use nearby letter keys only. The **Spelling slips** setting occasionally misspells the current word, deletes it, and types the correct word.
+
 ## Develop
 
 ```bash
