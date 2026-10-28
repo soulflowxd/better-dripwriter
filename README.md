@@ -16,7 +16,7 @@ Better Drip Writter is based on [Dripwriter Origin](https://github.com/alexey-ma
 
 ## Design
 
-The extension icon in [`assets/icon.png`](./assets/icon.png) uses an ivory pen-nib **b** and amber ink drop. The popup has a compact header, clearer status indicator, and warmer action styling.
+The extension icon in [`assets/icon.png`](./assets/icon.png) uses an ivory pen-nib **b** and a blue ink drop. The popup uses the same blue accent, with “Better” highlighted and a short, single-line label above the title.
 
 ## Develop
 

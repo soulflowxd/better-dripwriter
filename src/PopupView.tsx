@@ -18,8 +18,6 @@ function stateForStatus(status: TypingStatus, settled: StatusState): StatusState
   return status.running ? "running" : settled;
 }
 
-const TITLE = "Better Drip Writter";
-const TITLE_SPLIT = "Better Drip ".length;
 const THEME_KEY = "dripwriterTheme";
 
 function MixRow({ id, label, unit, min, max, step = 1, value, onChange }: {
@@ -62,7 +60,6 @@ export default function PopupView() {
   const [statusState, setStatusState] = useState<StatusState>("idle");
   const [resumable, setResumable] = useState(false);
   const [theme, setTheme] = useState<"dark" | "light">("dark");
-  const [titleLen, setTitleLen] = useState(TITLE.length);
   const loaded = useRef(false);
   const themeLoaded = useRef(false);
   const [apiMode, setApiMode] = useState<boolean>(false);
@@ -126,25 +123,6 @@ export default function PopupView() {
     if (!apiModeLoaded.current) return;
     void chrome.storage.local.set({ [API_MODE_STORAGE_KEY]: apiMode });
   }, [apiMode]);
-
-  useEffect(() => {
-    chrome.tabs.query({ active: true, currentWindow: true }).then(([tab]) => {
-      if (!tab?.id) return;
-      const key = `title_played_${tab.id}`;
-      chrome.storage.session.get(key).then(r => {
-        if (!r[key]) {
-          chrome.storage.session.set({ [key]: true });
-          setTitleLen(0);
-        }
-      });
-    });
-  }, []);
-
-  useEffect(() => {
-    if (titleLen >= TITLE.length) return;
-    const t = setTimeout(() => setTitleLen(l => l + 1), 55);
-    return () => clearTimeout(t);
-  }, [titleLen]);
 
   const sendToActiveTab = useCallback(
     async (
@@ -287,11 +265,10 @@ export default function PopupView() {
   return (
     <main className="shell">
       <header className="hero">
-        <p className="hero-eyebrow">BETTER DRIP WRITTER / YOUR TYPING STUDIO</p>
+        <p className="hero-eyebrow">TYPE NATURALLY / ANYWHERE</p>
         <h1 className="title">
-          {TITLE.slice(0, Math.min(titleLen, TITLE_SPLIT))}
-          {titleLen > TITLE_SPLIT ? <em>{TITLE.slice(TITLE_SPLIT, titleLen)}</em> : null}
-          {titleLen < TITLE.length && <span className="title-cursor" />}
+          <span className="title-accent">Better</span> Drip
+          <em>Writter</em>
         </h1>
         <button
           type="button"
@@ -299,7 +276,7 @@ export default function PopupView() {
           onClick={() => setTheme(t => t === "dark" ? "light" : "dark")}
           aria-label="Toggle theme"
         >
-          {theme === "dark" ? "☀️" : "🌙"}
+          {theme === "dark" ? "☀" : "☾"}
         </button>
         <p className="hero-description">Paste your text, place the cursor in an editor, then press Start.</p>
       </header>
