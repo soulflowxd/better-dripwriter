@@ -263,7 +263,12 @@ export default function PopupView() {
   return (
     <main className="shell">
       <header className="hero">
-        <div className="brand-mark" aria-hidden="true">b<span>·</span></div>
+        <img
+          className="brand-mark"
+          src={chrome.runtime.getURL(chrome.runtime.getManifest().icons?.["48"] ?? "")}
+          alt=""
+          aria-hidden="true"
+        />
         <div className="brand-copy">
           <h1 className="title"><span>Better</span> Dripwriter</h1>
           <p className="hero-description">Your words, at your pace.</p>

@@ -16,7 +16,7 @@ Better Dripwriter is based on [Dripwriter Origin](https://github.com/alexey-max-
 
 ## Design
 
-The extension icon in [`assets/icon.png`](./assets/icon.png) uses an ivory pen-nib **b** and a blue ink drop. The popup uses bundled Inter typography, blue Aero-inspired glass panels, and glossy white pill buttons with a blue outline. Dark and light themes, live status, and collapsible typing settings are available. Inter is distributed under the [SIL Open Font License](./assets/fonts/Inter-OFL.txt).
+The [extension icon](./assets/icon.png) is a blue Aero glass tile with a pen-nib **b** and ink drop. The popup uses the same packaged icon as the browser toolbar and extension listing. It pairs bundled Inter typography with layered glass panels, glossy white pill buttons, and glass-finished typing controls. Dark and light themes, live status, and collapsible typing settings are available. Inter is distributed under the [SIL Open Font License](./assets/fonts/Inter-OFL.txt).
 
 Typos use nearby letter keys only. The **Spelling slips** setting occasionally misspells the current word, deletes it, and types the correct word.
 
