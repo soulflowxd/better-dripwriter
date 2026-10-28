@@ -1,6 +1,6 @@
 {
-  "name": "dripwriter-origin",
-  "displayName": "Dripwriter Origin",
+  "name": "better-drip-writter",
+  "displayName": "Better Drip Writter",
   "version": "3.2.0",
   "description": "Simulates human typing on any website — Google Docs, Canvas, and more: natural speed, realistic typos, false starts, and breaks.",
   "author": "Alexey Fedorov",
@@ -9,9 +9,9 @@
   "scripts": {
     "dev": "plasmo dev",
     "dev:firefox": "plasmo dev --target=firefox-mv3",
-    "build": "plasmo build",
-    "build:firefox": "plasmo build --target=firefox-mv3",
-    "package": "plasmo package && plasmo package --target=firefox-mv3",
+    "build": "plasmo build && node scripts/fix-content-manifest.mjs chrome-mv3-prod",
+    "build:firefox": "plasmo build --target=firefox-mv3 && node scripts/fix-content-manifest.mjs firefox-mv3-prod",
+    "package": "pnpm build && pnpm build:firefox && plasmo package && plasmo package --target=firefox-mv3",
     "typecheck": "tsc --noEmit",
     "test": "node --test \"tests/*.test.ts\"",
     "test:integration": "node --test --test-concurrency=1 \"tests/integration/*.test.mjs\"",
@@ -30,7 +30,7 @@
     "typescript": "^6.0.3"
   },
   "manifest": {
-    "name": "Dripwriter Origin",
+    "name": "Better Drip Writter",
     "permissions": [
       "storage",
       "scripting"
@@ -40,7 +40,7 @@
     ],
     "browser_specific_settings": {
       "gecko": {
-        "id": "dripwriter-origin@local.extension",
+        "id": "better-drip-writter@local.extension",
         "data_collection_permissions": {
           "required": [
             "none"

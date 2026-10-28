@@ -1,4 +1,4 @@
-# Dripwriter Origin
+# Better Drip Writter
 
 A cross-browser extension (Chrome / Edge / Firefox) that types pasted text into any website — Google Docs, Canvas, the Packback editor, and virtually any `<textarea>`, `<input>`, or `[contenteditable]` field — with believable human cadence:
 
@@ -10,11 +10,9 @@ A cross-browser extension (Chrome / Edge / Firefox) that types pasted text into 
 
 Built with [Plasmo](https://docs.plasmo.com/) + React + TypeScript.
 
-## Brand Name Clarification
+## Attribution
 
-**Dripwriter Origin** is an independent, noncommercial open-source project created and maintained by Alexey Fedorov. It is **not affiliated with, endorsed by, or connected to** Dripwriter, LLC or the commercial service at dripwriter.com.
-
-The **"Origin"** suffix follows established open-source naming convention (as in *uBlock* / *uBlock Origin*): it denotes an independent, community project distinct from any similarly named commercial product. Any reference to "Dripwriter" in this project describes that separate product solely for the purpose of identification and comparison.
+Better Drip Writter is based on [Dripwriter Origin](https://github.com/alexey-max-fedorov/dripwriter-origin) by Alexey Fedorov. The original license remains in [LICENSE](./LICENSE). This project is independent of Dripwriter, LLC and its commercial service.
 
 ## ⭐️ FEATURED 
 
@@ -48,16 +46,18 @@ The packaged `*.zip` files in `build/` are tracked in git; the unpacked `build/<
 
 ## Usage
 
-1. Open any page with a text box — a Google Doc, a Canvas assignment, the Packback editor, or any standard textarea / contenteditable field.
+1. Open a web page with a text box — a Google Doc, a Canvas assignment, a Brightspace discussion or assignment editor, the Packback editor, or any standard textarea / contenteditable field.
 2. Click where the typing should begin.
-3. Open the Dripwriter Origin popup from the toolbar.
+3. Open the Better Drip Writter popup from the toolbar.
 4. Paste your text, tune the cadence, and press **Start**.
 5. Reopen the popup and press **Stop** at any time, or **Run Test** to verify which typing event paths work.
 
+Rich editors may live in embedded frames or open shadow roots. Click inside the actual editor before pressing Start. Browser extensions cannot type into browser-protected pages, native desktop apps, or closed shadow roots; some web editors also reject synthetic input. Use **Run Test** on an unfamiliar editor before a longer run.
+
 ## Marketing site
 
-A Next.js marketing site lives in [`website/`](./website) and deploys to `dripwriter.org`.
+The upstream Next.js marketing site remains in [`website/`](./website). It has not been adapted for this fork.
 
 ## License
 
-[Dripwriter Origin License](./LICENSE) — noncommercial use is permitted; commercial use requires a separate license.
+[Original project license](./LICENSE) — noncommercial use is permitted; commercial use requires a separate license.

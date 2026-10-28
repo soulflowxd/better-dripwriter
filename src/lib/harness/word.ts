@@ -84,7 +84,7 @@ export class WordHarness implements Harness {
       throw new Error(
         this.wrote
           ? "Word Online stopped accepting text mid-run. Click back into the document and press Start again."
-          : "Dripwriter Origin can't type into this document — Word Online rejected every input method."
+          : "Better Drip Writter can't type into this document — Word Online rejected every input method."
       );
     }
 

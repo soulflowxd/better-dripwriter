@@ -79,7 +79,7 @@ export class DefaultHarness implements Harness {
       throw new Error(
         this.wrote
           ? "This text box stopped accepting text mid-run. Click back into it and press Start again."
-          : "Dripwriter Origin can't type into this text box — it rejected every input method."
+          : "Better Drip Writter can't type into this text box — it rejected every input method."
       );
     }
 
@@ -154,15 +154,17 @@ async function attemptMutation(
   });
 }
 
-/** Last editable focused in THIS frame, else the active element if it's editable. */
+/** Last editable focused in THIS frame, including editors in open shadow roots. */
 let lastEditable: HTMLElement | null = null;
 
 if (typeof document !== "undefined") {
   document.addEventListener(
     "focusin",
     (event) => {
-      const target = event.target;
-      if (target instanceof HTMLElement && isEditable(target)) {
+      const target = event.composedPath().find((node) =>
+        node instanceof HTMLElement && isEditable(node)
+      );
+      if (target instanceof HTMLElement) {
         lastEditable = target;
       }
     },
@@ -171,9 +173,12 @@ if (typeof document !== "undefined") {
 }
 
 function findEditable(): HTMLElement | null {
-  const active = document.activeElement;
-  if (active instanceof HTMLElement && isEditable(active)) {
-    return active;
+  let active: Element | null = document.activeElement;
+  while (active) {
+    if (active instanceof HTMLElement && isEditable(active)) {
+      return active;
+    }
+    active = active.shadowRoot?.activeElement ?? null;
   }
   return lastEditable && lastEditable.isConnected ? lastEditable : null;
 }

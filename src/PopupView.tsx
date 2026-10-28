@@ -18,7 +18,7 @@ function stateForStatus(status: TypingStatus, settled: StatusState): StatusState
   return status.running ? "running" : settled;
 }
 
-const TITLE = "Dripwriter Origin";
+const TITLE = "Better Drip Writter";
 const TITLE_SPLIT = 10;
 const THEME_KEY = "dripwriterTheme";
 
@@ -385,7 +385,7 @@ export default function PopupView() {
       </form>
 
       <footer className="popup-footer">
-        <span className="footer-brand">Dripwriter Origin</span>
+        <span className="footer-brand">Better Drip Writter</span>
         <span className="popup-version">{VERSION_TAG}</span>
       </footer>
 
