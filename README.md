@@ -16,7 +16,7 @@ Better Dripwriter is based on [Dripwriter Origin](https://github.com/alexey-max-
 
 ## Design
 
-The extension icon in [`assets/icon.png`](./assets/icon.png) uses an ivory pen-nib **b** and a blue ink drop. The popup uses translucent glass panels, a soft blue glow, rounded controls, a text area, live status, and collapsible typing settings. Dark and light themes are available.
+The extension icon in [`assets/icon.png`](./assets/icon.png) uses an ivory pen-nib **b** and a blue ink drop. The popup uses translucent glass panels, a blue glow, compact controls, a text area, live status, and collapsible typing settings. Dark and light themes are available.
 
 Typos use nearby letter keys only. The **Spelling slips** setting occasionally misspells the current word, deletes it, and types the correct word.
 

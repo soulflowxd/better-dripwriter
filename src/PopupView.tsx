@@ -265,22 +265,20 @@ export default function PopupView() {
       <header className="hero">
         <div className="brand-mark" aria-hidden="true">b<span>·</span></div>
         <div className="brand-copy">
-          <p className="hero-eyebrow">BETTER DRIPWRITER</p>
-          <h1 className="title">Better <span>Dripwriter.</span></h1>
+          <h1 className="title"><span>Better</span> Dripwriter</h1>
           <p className="hero-description">Your words, at your pace.</p>
         </div>
         <button
           type="button"
           className="theme-toggle"
           onClick={() => setTheme(t => t === "dark" ? "light" : "dark")}
-          aria-label="Toggle theme"
+          aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
         >
-          {theme === "dark" ? "☀" : "☾"}
+          {theme === "dark" ? "Light" : "Dark"}
         </button>
       </header>
 
       <section className="status" data-state={statusState}>
-        <span className="status-label">STATUS</span>
         <span className="status-detail">{statusDetail}</span>
       </section>
 
