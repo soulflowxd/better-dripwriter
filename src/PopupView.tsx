@@ -30,7 +30,7 @@ function MixRow({ id, label, unit, min, max, step = 1, value, onChange }: {
       <span className="mr-label">{label}</span>
       <div className="mr-track-wrap">
         <input
-          type="range" min={min} max={max} step={step} value={value}
+          type="range" min={min} max={max} step={step} value={value} aria-label={label}
           onChange={e => {
             const v = Number(e.target.value);
             onChange(v);
