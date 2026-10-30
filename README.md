@@ -2,6 +2,10 @@
 
 A cross-browser extension (Chrome / Edge / Firefox) that types pasted text into web editors, including Google Docs, Canvas, Brightspace, and standard `<textarea>`, `<input>`, or `[contenteditable]` fields.
 
+![Better Dripwriter v3.3.3 popup with sample text](./docs/screenshots/better-dripwriter-popup.png)
+
+The screenshot shows the packaged Chrome popup with sample text.
+
 - adjustable typing speed (20–150 WPM)
 - keyboard-neighbor typos that get auto-corrected
 - occasional false-start words pulled from nearby context and fully deleted
